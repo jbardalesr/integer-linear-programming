@@ -10,9 +10,13 @@ c = [[1000, 10, 10, 12, 25, 23],
 
 dvar boolean x[1..6][1..6];
 int c[1..6][1..6] = ...;
-minimize sum(i in 1..6, j in 1..6) c[i][j]*x[i][j];
+
+minimize
+  	sum(i in 1..6, j in 1..6) c[i][j]*x[i][j];
+
 constraints{
-	forall(i in 1..6) x[i][i] == 0;
+	forall(i in 1..6)
+		x[i][i] == 0;
 	forall(j in 1..6) 
 		sum(i in 1..6) x[i][j] == 1;
 	forall(i in 1..6)

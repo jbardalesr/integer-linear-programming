@@ -8,10 +8,13 @@ c = [[2, 1, 3, 4, 2],
 
 dvar boolean x[1..5][1..5];
 int c[1..5][1..5] = ...;
-minimize sum(i in 1..5, j in 1..5) c[i][j]*x[i][j];
-constraints{
+
+minimize
+  	sum(i in 1..5, j in 1..5)c[i][j]*x[i][j];
+  	
+subject to {
 	forall(i in 1..5)
-	  	sum(j in 1..5) x[i][j] == 1;
+	  	sum(j in 1..5)x[i][j] == 1;
 	forall(j in 1..5)
-	  	sum(i in 1..5) x[i][j] == 1;
+	  	sum(i in 1..5)x[i][j] == 1;
 }
